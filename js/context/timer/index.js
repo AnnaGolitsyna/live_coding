@@ -1,12 +1,11 @@
 const timer = {
   secondsPassed: 0,
   minsPassed: 0,
-  id: 0,
+  intervID: 0,
   startTimer() {
-
       // input => callback, ms
-      // output => number (ID)
-    this.id = setInterval(() => {
+      // output => number (intervID)
+    this.intervID = setInterval(() => {
       this.secondsPassed += 1;
       if (this.secondsPassed === 5) {
         this.minsPassed += 1;
@@ -24,7 +23,7 @@ const timer = {
     return `${this.minsPassed}:${this.secondsPassed}`;
   },
   stopTimer() {
-    clearInterval(this.id);
+    clearInterval(this.intervID);
   },
   resetTimer() {
     this.minsPassed = 0;
