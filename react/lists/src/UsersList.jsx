@@ -44,21 +44,23 @@ class UsersList extends React.Component {
     const usersListRender = users.slice(indexFrom, indexTo);
 
     return (
-      <div>
-        <Pagination
-          currentPage={currentPage}
-          totalItems={totalItems}
-          itemsPerPage={itemsPerPage}
-          goPrev={this.goPrev}
-          goNext={this.goNext}
-        />
+    
+        <div>
+          <Pagination
+            currentPage={currentPage}
+            totalItems={totalItems}
+            itemsPerPage={itemsPerPage}
+            goPrev={this.goPrev}
+            goNext={this.goNext}
+          />
 
-        <ul className="users">
-          {usersListRender.map(user => (
-            <User key={user.id} {...user} />
-          ))}
-        </ul>
-      </div>
+          <ul className="users">
+            {usersListRender.map(user => (
+              <User key={user.id} {...user} />
+            ))}
+          </ul>
+        </div>
+
     );
   }
 }
