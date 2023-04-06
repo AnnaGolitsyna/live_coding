@@ -1,32 +1,63 @@
-// input - arr of num
-// output - number => diff = max - min
+// input - start, end => number
+// output - minJumps => number
+// jump => only i+1, i+3
 
-// const diffMaxMin = arr => Math.max(...arr) - Math.min(...arr);
-// console.log(diffMaxMin([23, 3, 19, 21, 16])); // 20 = 23-3
-// console.log(diffMaxMin([1, 434, 555, 34, 112])); // 554 = 555-1
+// const countJumps = (start, end) => {
+//   const stepThree = Math.floor((end - start) / 3);
+//   const stepOne = end - start - stepThree * 3;
+//   return Math.round((end - start) / 3) + stepOne;
+// };
 
-// input - arr
-// output - sum of even nums
+// console.log(countJumps(1, 5));
+// console.log(countJumps(1, 9));
+// console.log(countJumps(1, 10));
+// console.log(countJumps(1, 12));
 
-// const sumEvenNums = arr => arr.filter(el => el % 2 === 0).reduce((acc, el) => acc + el, 0);
-// const sumEvenNums = numbers => numbers.reduce((acc, num) => acc + (num % 2 === 0 ? num : 0), 0);
+// input - parenString => ()
+// output - boolean
 
-// console.log(sumEvenNums([4, 3, 1, 2, 5, 10, 6, 7, 9, 8])); // 30
-// console.log(sumEvenNums([])); // 0
+const isValidParenthese = parenStr => {
+  const stack = [];
 
-const cubeChecker = function (volume, side) {
-  //   if (volume <= 0 || side <= 0) {
-  //     return false;
-  //   }
-  //   if (volume === side ** 3) {
-  //     return true;
-  //   }
+  for (let i = 0; i < parenStr.length; i++) {
+    if (parenStr[i] === '(') {
+      stack.push(parenStr[i]);
+    } else if (parenStr[i] === ')') {
+      if (stack.length === 0) {
+        return false;
+      }
 
-  //   return false;
-  return volume > 0 && side > 0 && volume === side ** 3;
+      stack.pop();
+    }
+  }
+  return stack.length === 0;
 };
 
-console.log(cubeChecker(56.3, 1)); // f
-console.log(cubeChecker(125, 5)); // t
-console.log(cubeChecker(8, 3)); // f
-console.log(cubeChecker(8, 2)); // t
+//   const test = parenStr.split('');
+
+//   if (test.length % 2 === 1) {
+//     return false;
+//   }
+
+//   for (let index = 0; index < test.length; index += 1) {
+//     if (test[0] === ')') {
+//       return false;
+//     }
+//     if (test[index] === '(' && test[index + 1] === ')') {
+//       test.splice(index, 2);
+//       index -= 2;
+//     }
+//     if (test[index] === '(') {
+//       test.splice(test.indexOf(')', index));
+//       test.splice(index, 1);
+//       index -= 1;
+//     }
+//   }
+//   console.log(test);
+//   return !test.length;
+
+console.log(isValidParenthese('()')); // =>  true
+console.log(isValidParenthese(')(()))')); // =>  false
+console.log(isValidParenthese('(')); // =>  false
+console.log(isValidParenthese('(())((()())())')); // =>  true
+console.log(isValidParenthese('())(()'));
