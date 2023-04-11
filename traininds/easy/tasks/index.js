@@ -1,18 +1,44 @@
-// input - number
-// output - boolean
+// input - string
+// output - string with '.'
 
-const isPowerOfTwo = n => {
-    if (n === 1 || n === 2) {
-      return true;
-    }
-    if (n < 1) {
-      return false;
-    }
-    return isPowerOfTwo(n / 2);
-  // return Number.isInteger(Math.log2(n));
+const dotCalculator = equation => {
+  const [firstEl, operand, secondEl] = equation.split(' ');
+
+  switch (operand) {
+    case '+':
+      return '.'.repeat(firstEl.length + secondEl.length);
+    case '-':
+      return '.'.repeat(firstEl.length - secondEl.length);
+    case '*':
+      return '.'.repeat(firstEl.length * secondEl.length);
+    case '//':
+      return '.'.repeat(firstEl.length / secondEl.length);
+    default:
+      return equation;
+  }
+
+  // if(equation.includes(' + ')) {
+  //      const test = equation.split(' + ');
+  //      return '.'.repeat(test[0].length + test[1].length);
+  // }
+
+  //  if (equation.includes(' - ')) {
+  //    const test = equation.split(' - ');
+  //    return '.'.repeat(test[0].length - test[1].length);
+  //  }
+
+  //   if (equation.includes(' * ')) {
+  //     const test = equation.split(' * ');
+  //     return '.'.repeat(test[0].length * test[1].length);
+  //   }
+
+  //   if (equation.includes(' // ')) {
+  //     const test = equation.split(' // ');
+  //     return '.'.repeat(test[0].length / test[1].length);
+  //   }
 };
 
-console.log(isPowerOfTwo(1024)); // true
-console.log(isPowerOfTwo(4096)); // true
-console.log(isPowerOfTwo(0)); // true
-console.log(isPowerOfTwo(68));
+console.log(dotCalculator('... + ..')); // '.....'
+console.log(dotCalculator('... - ..')); // ''
+console.log(dotCalculator('... * ...')); // '.........'
+console.log(dotCalculator('..... // ..')); //
